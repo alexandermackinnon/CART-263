@@ -1,3 +1,3 @@
-# Exercice 1
+# Exercise 1
 
 Just getting set up here... :)
