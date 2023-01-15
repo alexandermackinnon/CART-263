@@ -10,13 +10,6 @@ author, and this description to match your project!
 
 /* ============ Variables ============ */
 
-// Colors
-let colors = {
-  bg: "#1a1a1a",
-  fg: "#e8e8e8",
-  detail: "#303030",
-};
-
 // Paddle Properties
 let paddle = {
   width: 10,
@@ -49,7 +42,6 @@ let player2 = {
 };
 
 // Ball Properties
-
 let ball = {
   // Defines the width and height of the ball
   size: 10,
@@ -67,19 +59,28 @@ let ball = {
   speed: {
     y: {
       active: 0,
+      default: 0,
       max: 10,
       min: 0,
     },
     x: {
-      active: 16,
-      max: 16,
+      active: 0,
+      default: 6,
+      max: 20,
       min: 8,
     },
   },
 };
 
-/* ============ Preload ============ */
-function preload() {}
+// Game
+let start = false;
+
+// Colors
+let colors = {
+  bg: "#1a1a1a",
+  fg: "#e8e8e8",
+  detail: "#212121",
+};
 
 /* ============ Setup ============ */
 function setup() {
@@ -97,14 +98,34 @@ function setup() {
 
 /* ============ Draw ============ */
 function draw() {
-  // Background
+  // Draw Background
   background(colors.bg);
 
-  // Middle line
+  // Draw Middle line
   fill(colors.detail);
-  rect(width / 2, height / 2, 5, height);
+  rect(width / 2, height / 2, 10, height);
 
-  // Paddle 1
+  // Draw start game indicatior
+  textSize(12);
+  textAlign(CENTER, CENTER);
+  fill(colors.fg);
+  if (start == false) {
+    text("Press SPACE to start", width / 2, 20);
+  } else {
+    text("");
+  }
+
+  // Draw scores
+  textSize(12);
+  textAlign(CENTER, CENTER);
+  fill(colors.fg);
+  if (start == true) {
+    text(player1.score + "-" + player2.score, width / 2, 20);
+  } else {
+    text("");
+  }
+
+  // Draw Player 1's paddle
   fill(colors.fg);
   rect(
     width - width + paddle.edgeDist,
@@ -117,7 +138,7 @@ function draw() {
     0
   );
 
-  // Paddle 2
+  // Draw Player 2's paddle
   fill(colors.fg);
   rect(
     width - paddle.edgeDist,
@@ -144,18 +165,11 @@ function draw() {
   player2.edges.bottom = player2.position + paddle.height / 2;
   player2.edges.left = width - (paddle.edgeDist + paddle.width);
 
-  console.log(
-    player2.edges.top,
-    player2.edges.right,
-    player2.edges.bottom,
-    player2.edges.left
-  );
-
-  // Update the position of the shape
+  // Update the position of the ball
   ball.position.x = ball.position.x + ball.speed.x.active * ball.direction.x;
   ball.position.y = ball.position.y + ball.speed.y.active * ball.direction.y;
 
-  // Ball bounces horizontally if it hits a paddle
+  // Ball bounces if it hits a paddle 1
   if (
     ball.position.y >= player1.edges.top &&
     ball.position.y <= player1.edges.bottom &&
@@ -190,6 +204,7 @@ function draw() {
     }
   }
 
+  // Ball bounces if it hits paddle 2
   if (
     ball.position.y >= player2.edges.top &&
     ball.position.y <= player2.edges.bottom &&
@@ -231,13 +246,19 @@ function draw() {
 
   // Ball stops if it hits left or right wall
   if (ball.position.x > width - ball.size || ball.position.x < ball.size) {
-    ball.direction.x = 0;
-    ball.direction.y = 0;
+    goalScored();
   }
 
   // Ball
   fill(colors.fg);
   ellipse(ball.position.x, ball.position.y, ball.size, ball.size);
+
+  // Start Game
+  if (start == false) {
+    if (keyIsDown(32)) {
+      startGame();
+    }
+  }
 }
 
 /* ============ Move Paddle ============ */
@@ -277,4 +298,49 @@ function paddleMove() {
 }
 
 /* ============ Start Game ============ */
-function startGame() {}
+function startGame() {
+  player1.score = 0;
+  player2.score = 0;
+  start = true;
+  placeBall();
+}
+
+/* ============ Stop Game ============ */
+function stopGame() {
+  start = false;
+  ball.speed.x.active = 0;
+  ball.speed.y.active = 0;
+}
+
+/* ============ Goal Scored ============ */
+function goalScored() {
+  if (ball.position.x > width - ball.size) {
+    player1.score++;
+    if (player1.score == 10) {
+      stopGame();
+    } else {
+      placeBall();
+    }
+  }
+  if (ball.position.x < ball.size) {
+    player2.score++;
+    if (player2.score == 10) {
+      stopGame();
+    } else {
+      placeBall();
+    }
+  }
+}
+
+/* ============ Place Ball ============ */
+function placeBall() {
+  if (start == true) {
+    // Ball Initial Position
+    ball.position.x = width / 2;
+    ball.position.y = height / 2;
+    // Adjust speed
+    ball.speed.x.active = ball.speed.x.default;
+    ball.speed.y.active = ball.speed.y.default;
+    ball.direction.x = -ball.direction.x;
+  }
+}
