@@ -13,15 +13,15 @@ author, and this description to match your project!
 // Paddle Properties
 let paddle = {
   width: 10,
-  height: 80,
-  speed: 8,
-  edgeDist: 20,
+  height: 100,
+  speed: 7,
+  edgeDist: 20, // Distance between the edge and paddle
 };
 
 // Player Properties
 let player1 = {
   position: 250,
-  score: null,
+  score: 0,
   edges: {
     top: null,
     right: null,
@@ -29,10 +29,9 @@ let player1 = {
     left: null,
   },
 };
-
 let player2 = {
   position: 250,
-  score: null,
+  score: 0,
   edges: {
     top: null,
     right: null,
@@ -55,7 +54,7 @@ let ball = {
     x: 1,
     y: 1,
   },
-  // Defines vertically and horizontally how fast the ball is by default and its limits
+  // Defines vertically and horizontally how fast the ball is by default and its limits. The active ariable is where the current speed of the ball is stored.
   speed: {
     y: {
       active: 0,
@@ -73,7 +72,7 @@ let ball = {
 };
 
 // Game
-let start = false;
+let start = false; // When set to true, a game to 10 is started
 
 // Colors
 let colors = {
@@ -84,9 +83,17 @@ let colors = {
 
 /* ============ Setup ============ */
 function setup() {
+  // Create canvas and set size
   createCanvas(750, 500);
+
+  // Shape properties
   rectMode(CENTER);
   noStroke();
+
+  // Text properties
+  textFont("Familjen Grotesk");
+  textAlign(CENTER, CENTER);
+  textStyle(BOLD);
 
   // Set frame rate
   frameRate(60);
@@ -105,9 +112,8 @@ function draw() {
   fill(colors.detail);
   rect(width / 2, height / 2, 10, height);
 
-  // Draw start game indicatior
+  // Draw start game indicator
   textSize(12);
-  textAlign(CENTER, CENTER);
   fill(colors.fg);
   if (start == false) {
     text("Press SPACE to start", width / 2, 20);
@@ -116,14 +122,10 @@ function draw() {
   }
 
   // Draw scores
-  textSize(12);
-  textAlign(CENTER, CENTER);
-  fill(colors.fg);
-  if (start == true) {
-    text(player1.score + "-" + player2.score, width / 2, 20);
-  } else {
-    text("");
-  }
+  textSize(288);
+  fill(colors.detail);
+  text(player1.score, width / 4, height / 2);
+  text(player2.score, (width / 4) * 3, height / 2);
 
   // Draw Player 1's paddle
   fill(colors.fg);
@@ -308,6 +310,10 @@ function startGame() {
 /* ============ Stop Game ============ */
 function stopGame() {
   start = false;
+  // Ball Initial Position
+  ball.position.x = width / 2;
+  ball.position.y = height / 2;
+  // Adjust speed
   ball.speed.x.active = 0;
   ball.speed.y.active = 0;
 }
