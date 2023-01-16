@@ -73,6 +73,7 @@ let ball = {
 
 // Game
 let start = false; // When set to true, a game to 10 is started
+let winningScore = 10; // Score a player needs to reach to win the game
 
 // Colors
 let colors = {
@@ -104,6 +105,8 @@ function setup() {
 }
 
 /* ============ Draw ============ */
+// The draw functions is called every 60 frames and allows the game to be shown and repeatedly redrawn on the canvas.
+
 function draw() {
   // Draw Background
   background(colors.bg);
@@ -153,6 +156,7 @@ function draw() {
     paddle.height
   );
 
+  // Activate paddle controls
   paddleMove();
 
   // Find Paddle 1 Area
@@ -178,19 +182,23 @@ function draw() {
     ball.position.x <= player1.edges.right &&
     ball.position.x >= player1.edges.left
   ) {
+    // Prevent speed to go over the maximum
     if (ball.speed.y.active <= ball.speed.y.min) {
       ball.speed.y.active = ball.speed.y.min + 2;
     }
     if (ball.speed.y.active >= ball.speed.y.max) {
       ball.speed.y.active = ball.speed.y.max - 2;
     }
+    // Prevent speed to go under the minimum
     if (ball.speed.x.active <= ball.speed.x.min) {
       ball.speed.y.active = ball.speed.y.min + 2;
     }
     if (ball.speed.x.active >= ball.speed.x.max) {
       ball.speed.x.active = ball.speed.x.max - 2;
     }
+    // Inverse horizontal direction to send ball the other way
     ball.direction.x *= -1;
+    // Either add or subtract 2 from the active speed to create speed variation
     ball.speed.x.active = random(
       ball.speed.x.active - 2,
       ball.speed.x.active + 2
@@ -199,6 +207,7 @@ function draw() {
       ball.speed.y.active - 2,
       ball.speed.y.active + 2
     );
+    // If the ball is hit on the upper half of the paddle, the bounce will be angled upwards. Otherwise, it'll be angled downwards.
     if (ball.position.y < player1.position) {
       ball.direction.y = -1;
     } else {
@@ -213,19 +222,23 @@ function draw() {
     ball.position.x <= player2.edges.right &&
     ball.position.x >= player2.edges.left
   ) {
+    // Prevent speed to go over the maximum
     if (ball.speed.y.active <= ball.speed.y.min) {
       ball.speed.y.active = ball.speed.y.min + 2;
     }
     if (ball.speed.y.active >= ball.speed.y.max) {
       ball.speed.y.active = ball.speed.y.max - 2;
     }
+    // Prevent speed to go under the minimum
     if (ball.speed.x.active <= ball.speed.x.min) {
       ball.speed.x.active = ball.speed.x.min + 2;
     }
     if (ball.speed.y.active >= ball.speed.x.max) {
       ball.speed.x.active = ball.speed.x.max - 2;
     }
+    // Inverse horizontal direction to send ball the other way
     ball.direction.x *= -1;
+    // Either add or subtract 2 from the active speed to create speed variation
     ball.speed.x.active = random(
       ball.speed.x.active - 2,
       ball.speed.x.active + 2
@@ -234,6 +247,8 @@ function draw() {
       ball.speed.y.active - 2,
       ball.speed.y.active + 2
     );
+
+    // If the ball is hit on the upper half of the paddle, the bounce will be angled upwards. Otherwise, it'll be angled downwards.
     if (ball.position.y < player2.position) {
       ball.direction.y = -1;
     } else {
@@ -264,6 +279,8 @@ function draw() {
 }
 
 /* ============ Move Paddle ============ */
+// This function is repeatdly called by the draw function to allow paddles to move up and down at all time.
+
 function paddleMove() {
   // Paddle 1 Controls
   if (keyIsDown(87)) {
@@ -300,6 +317,7 @@ function paddleMove() {
 }
 
 /* ============ Start Game ============ */
+// This function is called when the condition to start a game is met.
 function startGame() {
   player1.score = 0;
   player2.score = 0;
@@ -308,6 +326,7 @@ function startGame() {
 }
 
 /* ============ Stop Game ============ */
+// This function is called when one of the players reach the winning score and resets the ball to the middle with no speed.
 function stopGame() {
   start = false;
   // Ball Initial Position
@@ -319,10 +338,11 @@ function stopGame() {
 }
 
 /* ============ Goal Scored ============ */
+// This function is called when a goal is scored by any of the two players. It checks which player scored by looking at where the ball ended up when it was scored, and increments the respective player's score.
 function goalScored() {
   if (ball.position.x > width - ball.size) {
     player1.score++;
-    if (player1.score == 10) {
+    if (player1.score == winningScore) {
       stopGame();
     } else {
       placeBall();
@@ -330,7 +350,7 @@ function goalScored() {
   }
   if (ball.position.x < ball.size) {
     player2.score++;
-    if (player2.score == 10) {
+    if (player2.score == winningScore) {
       stopGame();
     } else {
       placeBall();
@@ -339,6 +359,7 @@ function goalScored() {
 }
 
 /* ============ Place Ball ============ */
+// This function is called everytime a goal is scored and the ball needs to be replaced and put back into play. The function checks if a game is started before doing anything.
 function placeBall() {
   if (start == true) {
     // Ball Initial Position
