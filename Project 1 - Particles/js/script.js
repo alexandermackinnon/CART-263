@@ -21,11 +21,6 @@ let squareInitSize = 20;
 let ncols = 15;
 let nrows = 15;
 
-function preload() {
-  // Sound
-  sound = loadSound("assets/sounds/static.wav");
-}
-
 // --------------- Set-up Function  ---------------
 function setup() {
   // Create Canvas

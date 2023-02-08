@@ -1,12 +1,12 @@
-# Particles Project - Aggresive & Dangerous
+# Particles With Personalities - Aggresive & Dangerous
 
-About the Prompt
+About the Project
 
-- For this project, it was required to create a particle system based on a given prompt, which in this case was "Aggresive & Dangerous"
+- For this project, it was required to create a particle system with a personality based on a given prompt, which in this case was "Aggresive & Dangerous"
 - To respond to this prompt through visualization, I wanted to create something that looks alarming, something "in-your-face".
-- I made a system that is accentued by bright red colors to illustrate this sense of urgency, of dangerousness. I also made a system that reacts very fast so that it can be perceived as aggressive.
+- I made a system that is accentued by bright red colors to illustrate this sense of urgency, of dangerousness. A system that reacts very fast so that it can be perceived as aggressive.
 
-About the Particle System
+How it Works
 
 - The particle system is shown on a grid of rounded squares that each loop through a color and scale animation cycle.
 - Upon startup, a square is selected at random on each frame and given an aggressive attribute, functioning through a boolean variable.
