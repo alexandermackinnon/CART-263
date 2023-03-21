@@ -10,4 +10,4 @@ About the Project
 Important Notes
 
 - To view the visualization, the user must click anywhere on the screen after the page loads.
-- The visualization comes with sound. Please active sound on your system when viewing for a better experience.
+- The visualization comes with sound. Please activate sound on your system when viewing for a better experience.
