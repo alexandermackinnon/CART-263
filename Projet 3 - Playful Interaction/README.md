@@ -7,8 +7,8 @@ by Alexander MacKinnon & Anthony Bourgeois
 
 A live demo is available at the following links
 
-- [Receiving Screen](https://vandalizers.mackinnonmedia/receiver) (open on a large display that each player can see):
-- [Player Screens](https://vandalizers.mackinnonmedia/player)(open on mobile devices):
+- [Receiving Screen](https://vandalizers.mackinnonmedia.com/receiver/) (open on a large display that each player can see):
+- [Player Screens](https://vandalizers.mackinnonmedia.com/player)(open on mobile devices):
 
 ## About the Game
 
