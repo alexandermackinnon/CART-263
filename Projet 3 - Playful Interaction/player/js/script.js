@@ -89,8 +89,8 @@ let colors = {
 
 /* ------- Setup Function ------- */
 function preload() {
-  brutalityRegFont = loadFont("../assets/fonts/brutality.regular.ttf");
-  brutalityExtraFont = loadFont("../assets/fonts/brutality.extra.ttf");
+  brutalityRegFont = loadFont("../assets/font/brutality.regular.ttf");
+  brutalityExtraFont = loadFont("../assets/font/brutality.extra.ttf");
 }
 
 /* ------- Setup Function ------- */

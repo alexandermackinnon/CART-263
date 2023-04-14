@@ -139,10 +139,10 @@ function preload() {
   playercard = loadImage("../assets/images/tag.png");
   paint1 = loadImage("../assets/images/paint2.png");
   paint2 = loadImage("../assets/images/paint3.png");
-  scally = loadImage("../assets/images/Scally.png");
+  scally = loadImage("../assets/images/scally.png");
   rascal = loadImage("../assets/images/rascal.png");
-  tricks = loadImage("../assets/images/Tricks.png");
-  loafer = loadImage("../assets/images/Loafer.png");
+  tricks = loadImage("../assets/images/tricks.png");
+  loafer = loadImage("../assets/images/loafer.png");
   blacktape = loadImage("../assets/images/tape2.png");
   cleartape = loadImage("../assets/images/tape6.png");
   introMusic = loadSound("../assets/sounds/cheesy.mp3"); // Taken from https://www.zapsplat.com/music/easy-cheesy-fun-up-tempo-funky-retro-action-arcade-game-music-great-for-menu-or-pause-sections/
