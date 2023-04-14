@@ -25,11 +25,17 @@ To play, there needs to be a main screen, preferably large and accessible so tha
 On startup, the player is introduced on the receiving screen to a click prompt, which launches the game and brings the users the lobby screen. This acts as a waiting room while everyone who is playing connects to the server. **When everyone is ready to play, any key can be pressed while in the lobby to start game**.
 ![Intro Screen](assets/readme/readme01.png)
 
+#### Mobile Display
+
 Players will see on their phones after selecting their player the following mobile display. This is a shooting sensor that will indicate where on the screen the user is aiming. **To shoot a paint ball, the player must tap on their phone**. Where the ball on the sensor is located when the phone is tapped is where it will end up on the main screen.
 ![Mobile Display](assets/readme/readme02.png)
 
+#### Game Screen
+
 As players throw paint, the wall will get filled up with different colors!
 ![In-Game Screen](assets/readme/readme03.png)
+
+#### End Results
 
 At the end of the 30-second showdown, bricks are counted and compiled into scores shown on screen. **From there, the user may click anywhere on the screen to go back to the lobby and start a new game.**
 ![End Results](assets/readme/readme04.png)
