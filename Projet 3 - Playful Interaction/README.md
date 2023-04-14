@@ -39,3 +39,17 @@ As players throw paint, the wall will get filled up with different colors!
 
 At the end of the 30-second showdown, bricks are counted and compiled into scores shown on screen. **From there, the user may click anywhere on the screen to go back to the lobby and start a new game.**
 ![End Results](assets/readme/readme04.png)
+
+## Inspirations
+
+Several inspirations were influencial for the design of the game. Icey towers were brought to mind, a freeware video game made by a Swedish developper. The infamous Jackbox games that are known for their multiplayers gameplay, and Little Big Planet for the mix of design between 2D and 3D artstyle.
+
+## Future Iterations
+
+Eventually, adding more challenges and obstacle during the gameplay. We wanted to punish the player with a cop sirens system where if you were pressing while the audio is playing, the player would be restrained for a few seconds. Also, a way that some of the brick are replaced and removed so that it creates more free spots mid-game. And finally, more gameplay from the player end where the throwing of the splatter has more personality (swiping to send the ball, spining the ball to create larger AOE) and prehaps a way to add a crosshair to the receiver end.
+
+## Credits
+
+Menu Music: [Easy Cheesy from Zapsplat](https://www.zapsplat.com/music/easy-cheesy-fun-up-tempo-funky-retro-action-arcade-game-music-great-for-menu-or-pause-sections/ "Easy Cheesy link title")
+Gameplay Music: [courtesy of Panda Beats Music - 1UP](https://pandabeatsmusic.com/ "Link to panda beats music website")
+Font: [Brutality from 1001Fonts.com](https://www.1001fonts.com/brutality-font.html "Link to Brutality font")
